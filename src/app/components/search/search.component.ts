@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OmdbService } from 'src/app/services/omdb.service';
 
 @Component({
@@ -11,11 +12,12 @@ export class SearchComponent implements OnInit {
   busqueda!: string;
   resultados: any;
 
-  constructor(private serviceOmdb: OmdbService) { }
+  constructor(private serviceOmdb: OmdbService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
+  // --------------------Functions-------------------
   buscar() {
     this.serviceOmdb.getQuery(`&s=${this.busqueda}`)
       .subscribe((response: any) => { // Cambia el tipo de dato de 'response' a 'any'
@@ -23,4 +25,9 @@ export class SearchComponent implements OnInit {
         console.log(this.resultados)
       });
   }
+
+  detalle(id: string) {
+    this.route.navigate(['detail', id]);
+  }
+
 }

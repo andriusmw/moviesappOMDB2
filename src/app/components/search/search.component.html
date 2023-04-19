@@ -1,1 +1,10 @@
-<p>search works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+    <div class="mt-3">
+      <label for="search" class="form-label">Búsqueda</label>
+      <input type="text" class="form-control" id="search" placeholder="busca tus películas" [(ngModel)]="busqueda">
+      <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+    </div>
+  </div>
+</div>

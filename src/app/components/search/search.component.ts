@@ -9,18 +9,18 @@ import { OmdbService } from 'src/app/services/omdb.service';
 export class SearchComponent implements OnInit {
 
   busqueda!: string;
+  resultados: any;
 
   constructor(private serviceOmdb: OmdbService) { }
+
   ngOnInit(): void {
   }
 
   buscar() {
-
-
     this.serviceOmdb.getQuery(`&s=${this.busqueda}`)
-      .subscribe(response => {
-        console.log(response);
-      })
+      .subscribe((response: any) => { // Cambia el tipo de dato de 'response' a 'any'
+        this.resultados = response.Search;
+        console.log(this.resultados)
+      });
   }
-
 }
